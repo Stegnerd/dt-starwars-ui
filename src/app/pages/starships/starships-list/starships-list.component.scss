@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+.loading,
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+table {
+  width: 100%;
+}
