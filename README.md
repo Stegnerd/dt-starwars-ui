@@ -1,11 +1,11 @@
 # DT Starwars UI
 
-An Angular application for browsing Star Wars starships. Users log in, then view a paginated, filterable list of starships backed by [dt-starwars-api](../dt-starwars-api), which itself wraps [swapi.tech](https://www.swapi.tech/api).
+An Angular application for browsing Star Wars starships. Users log in, then view a paginated, filterable list of starships backed by [dt-starwars-api](../dt-starwars-api), which itself wraps [swapi.tech](https://www.swapi.tech/api). If you don't want to run it yourself, there are pictures in the pics directory.
 
 ## Features
 
 - **Authentication** — login screen backed by a bearer-token API; an auth guard protects the starships route and redirects unauthenticated users to `/login`.
-- **Starships list** — paginated table of starships (name, model, manufacturer, class, crew, passengers).
+- **Starships list** — paginated table of starships (name, model, manufacturer, class, crew, passengers). I chose to leave out some data so it was easliy readable, its populated in the api!
 - **Manufacturer filtering** — filter the starships list by manufacturer via a dropdown populated from the API.
 - **Material UI** — built with Angular Material components and a custom theme.
 
