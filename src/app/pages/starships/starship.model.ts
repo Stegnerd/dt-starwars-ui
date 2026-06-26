@@ -2,7 +2,7 @@ export interface Starship {
   id: string;
   name: string;
   model: string;
-  manufacturer: string;
+  manufacturer: string[];
   cost_in_credits: string;
   length: string;
   max_atmosphering_speed: string;
@@ -23,4 +23,8 @@ export interface StarshipsListResult {
   limit: number;
   total_records: number;
   total_pages: number;
+}
+
+export interface ManufacturersResult {
+  manufacturers: string[];
 }
