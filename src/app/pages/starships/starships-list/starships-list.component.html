@@ -1,77 +1,73 @@
 @if (manufacturersLoading()) {
-  <div class="loading">
-    <mat-spinner />
-  </div>
+<div class="loading">
+  <mat-spinner />
+</div>
 } @else if (manufacturersError()) {
-  <div class="error">
-    <p>{{ manufacturersError() }}</p>
-    <button matButton="filled" (click)="fetchManufacturers()">Retry</button>
-  </div>
+<div class="error">
+  <p>{{ manufacturersError() }}</p>
+  <button matButton="filled" (click)="fetchManufacturers()">Retry</button>
+</div>
 } @else {
-  <mat-form-field>
+<div class="filter">
+  <mat-form-field [appearance]="'outline'">
     <mat-label>Manufacturer</mat-label>
-    <mat-select
-      [value]="manufacturer()"
-      (selectionChange)="onManufacturerChange($event.value)"
-    >
+    <mat-select [value]="manufacturer()" (selectionChange)="onManufacturerChange($event.value)">
       <mat-option [value]="null">All</mat-option>
       @for (option of manufacturers(); track option) {
-        <mat-option [value]="option">{{ option }}</mat-option>
+      <mat-option [value]="option">{{ option }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
+</div>
 
+<mat-card class="table-card">
   @if (loading()) {
-    <div class="loading">
-      <mat-spinner />
-    </div>
+  <div class="loading">
+    <mat-spinner />
+  </div>
   } @else if (error()) {
-    <div class="error">
-      <p>{{ error() }}</p>
-      <button matButton="filled" (click)="fetchPage()">Retry</button>
-    </div>
+  <div class="error">
+    <p>{{ error() }}</p>
+    <button matButton="filled" (click)="fetchPage()">Retry</button>
+  </div>
   } @else {
-    <table mat-table [dataSource]="starships()">
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let starship">{{ starship.name }}</td>
-      </ng-container>
+  <table mat-table [dataSource]="starships()">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let starship">{{ starship.name }}</td>
+    </ng-container>
 
-      <ng-container matColumnDef="model">
-        <th mat-header-cell *matHeaderCellDef>Model</th>
-        <td mat-cell *matCellDef="let starship">{{ starship.model }}</td>
-      </ng-container>
+    <ng-container matColumnDef="model">
+      <th mat-header-cell *matHeaderCellDef>Model</th>
+      <td mat-cell *matCellDef="let starship">{{ starship.model }}</td>
+    </ng-container>
 
-      <ng-container matColumnDef="manufacturer">
-        <th mat-header-cell *matHeaderCellDef>Manufacturer</th>
-        <td mat-cell *matCellDef="let starship">{{ starship.manufacturer.join(', ') }}</td>
-      </ng-container>
+    <ng-container matColumnDef="manufacturer">
+      <th mat-header-cell *matHeaderCellDef>Manufacturer</th>
+      <td mat-cell *matCellDef="let starship">{{ starship.manufacturer.join(', ') }}</td>
+    </ng-container>
 
-      <ng-container matColumnDef="starship_class">
-        <th mat-header-cell *matHeaderCellDef>Class</th>
-        <td mat-cell *matCellDef="let starship">{{ starship.starship_class }}</td>
-      </ng-container>
+    <ng-container matColumnDef="starship_class">
+      <th mat-header-cell *matHeaderCellDef>Class</th>
+      <td mat-cell *matCellDef="let starship">{{ starship.starship_class }}</td>
+    </ng-container>
 
-      <ng-container matColumnDef="crew">
-        <th mat-header-cell *matHeaderCellDef>Crew</th>
-        <td mat-cell *matCellDef="let starship">{{ starship.crew }}</td>
-      </ng-container>
+    <ng-container matColumnDef="crew">
+      <th mat-header-cell *matHeaderCellDef>Crew</th>
+      <td mat-cell *matCellDef="let starship">{{ starship.crew }}</td>
+    </ng-container>
 
-      <ng-container matColumnDef="passengers">
-        <th mat-header-cell *matHeaderCellDef>Passengers</th>
-        <td mat-cell *matCellDef="let starship">{{ starship.passengers }}</td>
-      </ng-container>
+    <ng-container matColumnDef="passengers">
+      <th mat-header-cell *matHeaderCellDef>Passengers</th>
+      <td mat-cell *matCellDef="let starship">{{ starship.passengers }}</td>
+    </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 
-    <mat-paginator
-      [length]="totalRecords()"
-      [pageSize]="pageSize()"
-      [pageIndex]="pageIndex()"
-      [pageSizeOptions]="[10, 25, 50]"
-      (page)="onPageChange($event)"
-    />
+  <mat-paginator [length]="totalRecords()" [pageSize]="pageSize()" [pageIndex]="pageIndex()"
+    [pageSizeOptions]="[10, 25, 50]" (page)="onPageChange($event)" />
   }
+</mat-card>
 }

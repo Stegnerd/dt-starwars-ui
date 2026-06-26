@@ -3,6 +3,23 @@
   padding: 1rem;
 }
 
+.filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.table-card {
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 1px solid #ffe81f;
+  overflow: hidden;
+}
+
+th.mat-mdc-header-cell {
+  color: #ffe81f;
+}
+
 .loading,
 .error {
   display: flex;

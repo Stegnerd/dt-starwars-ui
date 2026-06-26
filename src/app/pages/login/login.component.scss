@@ -9,6 +9,11 @@
   width: 320px;
 }
 
+mat-card-header {
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
 form {
   display: flex;
   flex-direction: column;
