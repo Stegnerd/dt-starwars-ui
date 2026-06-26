@@ -46,7 +46,7 @@ describe('StarshipsListComponent', () => {
   }
 
   it('creates and loads the first page on init', () => {
-    const listStarships = jasmine.createSpy('listStarships').and.returnValue(of(mockResult));
+    const listStarships = jest.fn().mockReturnValue(of(mockResult));
     const fixture = setup({ listStarships });
 
     expect(fixture.componentInstance).toBeTruthy();
@@ -56,7 +56,7 @@ describe('StarshipsListComponent', () => {
   });
 
   it('requests the next page on paginator page change', () => {
-    const listStarships = jasmine.createSpy('listStarships').and.returnValue(of(mockResult));
+    const listStarships = jest.fn().mockReturnValue(of(mockResult));
     const fixture = setup({ listStarships });
 
     fixture.componentInstance.onPageChange({ pageIndex: 1, pageSize: 25, previousPageIndex: 0, length: 1 });
@@ -65,7 +65,7 @@ describe('StarshipsListComponent', () => {
   });
 
   it('sets an error message when the request fails', () => {
-    const listStarships = jasmine.createSpy('listStarships').and.returnValue(throwError(() => new Error('boom')));
+    const listStarships = jest.fn().mockReturnValue(throwError(() => new Error('boom')));
     const fixture = setup({ listStarships });
 
     expect(fixture.componentInstance.error()).toBeTruthy();
