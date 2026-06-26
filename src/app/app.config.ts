@@ -1,9 +1,10 @@
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,6 +12,6 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideAnimationsAsync(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch(), withInterceptors([authInterceptor]))
   ]
 };

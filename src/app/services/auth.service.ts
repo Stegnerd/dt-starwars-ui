@@ -30,4 +30,8 @@ export class AuthService {
     localStorage.removeItem(TOKEN_KEY);
     this.isLoggedIn.set(false);
   }
+
+  getToken(): string | null {
+    return localStorage.getItem(TOKEN_KEY);
+  }
 }
